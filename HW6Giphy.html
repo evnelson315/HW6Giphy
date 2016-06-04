@@ -67,19 +67,29 @@
 
             // waits for function to run complete
             .done(function(response) {
-            		console.log(response);
+            		
                 // turns data from query into image.
-                var imageUrl = response.data[0].images.fixed_height.url;
-                	
+               // var imageUrl = response.data[0].images.fixed_height.url;
+               var results = response.data;
+                
+                for (var i = 0; i < results.length; i++) {
+                    var gifDiv = $('<div class="item">')
+
+                    var rating = results[i].rating;
+
+                    var p = $('<p>').text("Rating: " + rating);
+	
                 // turns into html element
                 var giphyImage = $("<img>");
+                giphyImage.attr('src', results[i].images.fixed_height.url);
                 
                 // sets image url as source. alt will just post pic or for other web services
-                giphyImage.attr('src', imageUrl);
-                giphyImage.attr('alt', 'giphyImage');
+                giphyImage.append(p);
+                giphyImage.append(giphyImage);
 
                 // posts to html
                 $('#itgoeshere').prepend(giphyImage);
+               }
             });
     });
 
