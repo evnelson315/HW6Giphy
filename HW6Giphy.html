@@ -76,21 +76,46 @@
                     var gifDiv = $('<div class="item">')
 
                     var rating = results[i].rating;
-
                     var p = $('<p>').text("Rating: " + rating);
 	
                 // turns into html element
+                var imgResults = $("<div>")
                 var giphyImage = $("<img>");
                 giphyImage.attr('src', results[i].images.fixed_height.url);
                 
                 // sets image url as source. alt will just post pic or for other web services
-                giphyImage.append(p);
-                giphyImage.append(giphyImage);
+                // giphyImage.append(giphyImage);
+                imgResults.append("<h2>Rating: "+rating+" </h2>");
+                imgResults.append(giphyImage);
+                
 
                 // posts to html
-                $('#itgoeshere').prepend(giphyImage);
+                $('#itgoeshere').prepend(giphyImage,"<h2>Rating: "+rating+" </h2>");
                }
             });
+
+     //   var all =  ob1[];
+     //push: still , animate url.    
+
+     		 var state = $(this).attr('data-state');
+
+            		      if ( state == 'still'){
+                $(this).attr('src', $(this).data('animate'));
+                $(this).data('state', 'animate');
+            }else{
+                $(this).attr('src', $(this).data('still'));
+                $(this).data('state', 'still');
+            }
+    
+     //        //----------------------------------------------------
+
+     //        //STEP FOUR: open the file in the browser and click on the images. Then click again to pause.
+	    // });
+
+
+
+
+
     });
 
 		// //$(‘body’).on(‘click’, ‘.myNewButtonsClass’, function() {console.log(‘hello’)}) Use this somewhere 
